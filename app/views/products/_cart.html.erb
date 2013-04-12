@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="span4">
+    <div class="well">
+      <h4>Your Shopping Cart</h4>
+      <table>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+        <% @products_in_cart.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= number_to_currency(product.price) %></td>
+          <td><%= link_to 'Remove from Cart', product, method: :post %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
