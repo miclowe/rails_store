@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
   def set_cart
     @products_in_cart = Product.where(:in_cart => true)
+    @cart_total = @products_in_cart.map{|p| p.price}.reduce(:+)
   end
 
   def index
@@ -21,10 +22,13 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     
     if @product[:in_cart]
-      @product[:in_cart] = ""
+      @product[:in_cart] = nil
     else
-      @product[:in_cart] = "t"
+      @product[:in_cart] = true
     end
+
+    # @product.save
+    # @product.update_attributes({:in_cart => true})
 
     respond_to do |format|
       @product.update_attributes(params[:product])

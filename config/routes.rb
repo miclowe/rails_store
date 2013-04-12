@@ -1,12 +1,15 @@
 RailsStore::Application.routes.draw do
-  resources :reviews
-
+  
+  # resources :reviews --> Don't need views for the reviews
+  # resources :reviews, :only => [:new, :create]
+  # resources :reviews
   resources :products
 
+  get '/reviews(.:format)', :controller => 'reviews', :action => 'index', :as => 'reviews'
+  get '/reviews/new(.:format)', :controller => 'reviews', :action => 'new', :as => 'new_review'
+  post '/reviews(.:format)', :controller => 'reviews', :action => 'create'
+  
   post "/products/:id" => "products#update_cart"
-  # post "/products/:id" => "products#remove_from_cart"
-  # post 'products/:id/update_cart' => 'products#show', :as => :add_to_cart
-  # post '/products/:id' => 'products#show'
 
 
   # The priority is based upon order of creation:

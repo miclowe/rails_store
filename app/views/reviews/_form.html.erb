@@ -30,7 +30,7 @@
     <%= f.text_field :rating %>
     -->
   </div>
-
+  
   <% if params[:id].present? %>
     <input type="hidden" name="review[product_id]" value="<%= @product_id %>" />
   <% else %>
