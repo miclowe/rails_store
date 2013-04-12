@@ -15,7 +15,12 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
 
-    @product_name = Product.all.find{|p| p.id == params[:id].to_i}.name
+    # @product_name = Product.where(:product_id => params[:id]).name
+    # if params[:id].present?
+    #   @product_name = Product.all.find{|p| p.id == params[:id].to_i}.name
+    # else
+    #   @product_name = "?"
+    # end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,12 +32,15 @@ class ReviewsController < ApplicationController
   # GET /reviews/new.json
   def new
     @review = Review.new
+    @product_id = params[:product_id]
 
     # Need for drop-down (select) of product name/id
     @products = Product.all
 
     if params[:id].present?
       @product_name = Product.all.find{|p| p.id == params[:id].to_i}.name
+    else
+      @product_name = "New Product"
     end
 
     respond_to do |format|
@@ -44,6 +52,9 @@ class ReviewsController < ApplicationController
   # GET /reviews/1/edit
   def edit
     @review = Review.find(params[:id])
+    @products = Product.all
+    # @product_id = params[:product_id]
+    # @product_name = Product.all.find{|p| p.id == @product_id.to_i}.name
   end
 
   # POST /reviews

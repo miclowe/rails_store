@@ -16,13 +16,25 @@
     <%= f.text_area :body %>
   </div>
   <div class="field">
+    <select name="review[rating]">
+      <option value = "">Select rating</option>
+      <option value = "0">0</option>
+      <option value = "1">1</option>
+      <option value = "2">2</option>
+      <option value = "3">3</option>
+      <option value = "4">4</option>
+      <option value = "5">5</option>
+    </select>
+    <!--
     <%= f.label :rating %><br />
     <%= f.text_field :rating %>
+    -->
   </div>
 
   <% if params[:id].present? %>
-    <input type="hidden" name="review[product_id]" value="<%= params[:id] %>" />
+    <input type="hidden" name="review[product_id]" value="<%= @product_id %>" />
   <% else %>
+    <%= f.label :product_id %><br />
     <select name="review[product_id]">
       <% @products.each do |product| %>
       <option value="<%= product.id %>">

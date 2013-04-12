@@ -14,7 +14,8 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-    @user_reviews = Review.where(:product_id => params[:id])
+    # @user_reviews = Review.where(:product_id => params[:id])
+    @user_reviews = Review.where(:product_id => @product.id)
 
     respond_to do |format|
       format.html # show.html.erb

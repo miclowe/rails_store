@@ -1,14 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>RailsStore</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title>Rails Store App</title>
+  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag    "styles", :media => "all" %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="/">Rails Store App</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <%= yield %>
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+    </div>
+  </footer>
 </body>
 </html>

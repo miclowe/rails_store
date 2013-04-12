@@ -17,5 +17,6 @@
     Review: <%= review.body %><br />
     Reviewed on: <%= review.created_at.strftime("%A, %B %e, %Y") %>
   <% end %>
+<hr />
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
