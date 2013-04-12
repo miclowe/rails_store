@@ -2,12 +2,12 @@ RailsStore::Application.routes.draw do
   
   # resources :reviews --> Don't need views for the reviews
   # resources :reviews, :only => [:new, :create]
-  # resources :reviews
+  resources :reviews
   resources :products
 
-  get '/reviews(.:format)', :controller => 'reviews', :action => 'index', :as => 'reviews'
-  get '/reviews/new(.:format)', :controller => 'reviews', :action => 'new', :as => 'new_review'
-  post '/reviews(.:format)', :controller => 'reviews', :action => 'create'
+  # get '/reviews(.:format)', :controller => 'reviews', :action => 'index', :as => 'reviews'
+  # get '/reviews/new(.:format)', :controller => 'reviews', :action => 'new', :as => 'new_review'
+  # post '/reviews(.:format)', :controller => 'reviews', :action => 'create'
   
   post "/products/:id" => "products#update_cart"
 
