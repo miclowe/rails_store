@@ -18,51 +18,28 @@ class ProductsController < ApplicationController
     end
   end
 
-  def update_cart
+  def add_to_cart
     @product = Product.find(params[:id])
-    
-    if @product[:in_cart]
-      @product[:in_cart] = nil
-    else
-      @product[:in_cart] = true
-    end
-
-    # @product.save
-    # @product.update_attributes({:in_cart => true})
+    @product[:in_cart] = true
 
     respond_to do |format|
       @product.update_attributes(params[:product])
       format.html { redirect_to products_url, notice: 'Your cart has been updated.' }
       format.json { head :no_content }
-
     end
   end
 
-  # def add_to_cart
-  #   @product = Product.find(params[:id])
-    
-  #   @product[:in_cart] = "t"
+  def remove_from_cart
+    @product = Product.find(params[:id])
+    @product[:in_cart] = nil
 
-  #   respond_to do |format|
-  #     @product.update_attributes(params[:product])
-  #     format.html { redirect_to products_url, notice: 'Product was successfully added to cart.' }
-  #     format.json { head :no_content }
+    respond_to do |format|
+      @product.update_attributes(params[:product])
+      format.html { redirect_to products_url, notice: 'Product was successfully removed from cart.' }
+      format.json { head :no_content }
 
-  #   end
-  # end
-
-  # def remove_from_cart
-  #   @product = Product.find(params[:id])
-    
-  #   @product[:in_cart] = false
-
-  #   respond_to do |format|
-  #     @product.update_attributes(params[:product])
-  #     format.html { redirect_to products_url, notice: 'Product was successfully removed from cart.' }
-  #     format.json { head :no_content }
-
-  #   end
-  # end
+    end
+  end
 
   # GET /products/1
   # GET /products/1.json

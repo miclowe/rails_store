@@ -1,16 +1,20 @@
 RailsStore::Application.routes.draw do
   
-  # resources :reviews --> Don't need views for the reviews
+  resources :reviews # Don't need views for the reviews
   # resources :reviews, :only => [:new, :create]
-  resources :reviews
-  resources :products
+
+  resources :products do
+    member do 
+      post :add_to_cart
+      post :remove_from_cart
+    end
+  end
 
   # get '/reviews(.:format)', :controller => 'reviews', :action => 'index', :as => 'reviews'
   # get '/reviews/new(.:format)', :controller => 'reviews', :action => 'new', :as => 'new_review'
   # post '/reviews(.:format)', :controller => 'reviews', :action => 'create'
-  
-  post "/products/:id" => "products#update_cart"
-
+  # get '/reviews', :to => 'reviews#index', :as => 'reviews'
+  # get '/reviews/:id(.:format)', :controller => 'reviews', :action => 'show', :as => 'review'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -62,7 +66,7 @@ RailsStore::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-  root :to => 'application#home'
+  root :to => 'products#index'
 
   # See how all your routes lay out with "rake routes"
 
