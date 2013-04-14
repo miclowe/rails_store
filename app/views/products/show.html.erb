@@ -1,8 +1,13 @@
+<% title "#{@product.name}"%>
 <p id="notice"><%= notice %></p>
 
 <p>
   <b>Image:</b>
-  <img src="<%= @product.image_url %>" />
+  <% if @product.image_url.present? %>
+    <%= image_tag("#{@product.image_url}") %>
+  <% else %>
+    No image available
+  <% end %>
 </p>
 
 <p>

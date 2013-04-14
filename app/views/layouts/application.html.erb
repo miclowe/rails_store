@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Rails Shop</title>
+  <title>The Rails Shop - <%= yield(:title) || "The Rails Shop" %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,7 +11,7 @@
   <header class="navbar navbar-inverse navbar-static-top">
     <div class="navbar-inner">
       <div class="container">
-        <%= link_to "Rails Shop", root_path, id: "logo" %>
+        <%= link_to "The Rails Shop", root_path, id: "logo" %>
         <nav>
           <ul class="nav">
             <li><%= link_to "Products", products_path %></li>
@@ -27,7 +27,7 @@
   <footer class="container center">
     <div class="row">
       <div clas="span12">
-        &copy; 2013 Rails Shop
+        &copy; 2013 The Rails Shop
       </div>
     </div>
   </footer>

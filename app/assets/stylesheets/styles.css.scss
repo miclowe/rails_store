@@ -53,8 +53,8 @@ h2 {
 }
 
 p {
-  font-size: 1.1em;
-  line-height: 1.7em;
+  font-size: .9em;
+  line-height: 1em;
 }
 
 /* header */
@@ -78,10 +78,11 @@ p {
 /* footer */
 
 footer {
+  color: #999;
+  border-top: 1px solid #eaeaea;
+  font-size: 12px;
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #999;
 }
 
 footer a {
@@ -92,10 +93,6 @@ footer a:hover {
   color: #222;
 }
 
-footer small {
-  float: left;
-}
-
 footer ul {
   float: right;
   list-style: none;
@@ -104,4 +101,35 @@ footer ul {
 footer ul li {
   float: left;
   margin-left: 10px;
+}
+
+.products_grid {
+  margin-top: 20px;
+  min-height: 250px;
+  width: 150px;
+}
+
+.img_container {
+  border: 1px solid #EBEBEB;
+  height: 125px;
+  padding: 5px;
+  margin: auto;
+  width: 125px;
+}
+
+.product_item_container {
+  border: 1px solid #BEBEBE;
+  display: inline-block;
+  float: left;
+  height: 275px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 170px;
+}
+
+.product_detail_container {
+  /*padding-left: 20px;*/
+  padding: 20px 10px 0 20px;
+  /*padding-top: 20px;*/
 }

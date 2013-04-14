@@ -1,7 +1,9 @@
+<% title "Home" %>
 <div class="center hero-unit">
-  <h1>Welcome to Rails Shop</h1>
+  <h3>Welcome to</h3>
+  <h1>The Rails Shop</h1>
 
-  <h2>This is the home page for the application.</h2>
+  <h3>This is the home page for the application.</h3>
 
   <%= link_to "Enter Store", '/products', class: "btn btn-large btn-primary" %>
 </div>
@@ -9,9 +11,9 @@
 
 <div class="span12 home">
   <div class="span6">
-  <a href="/products">Products</a>
+    <%= link_to 'Products', products_path %>
   </div>
   <div class="span6">
-    <a href="/reviews">Reviews</a>
+    <%= link_to 'Reviews', reviews_path %>
   </div>
 </div>
