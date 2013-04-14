@@ -3,6 +3,7 @@ RailsStore::Application.routes.draw do
   resources :reviews # Don't need views for the reviews
   # resources :reviews, :only => [:new, :create]
 
+  # Member routes add custom action to a specific instance using URL suffix and HTTP method provided
   resources :products do
     member do 
       post :add_to_cart
@@ -66,7 +67,7 @@ RailsStore::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-  root :to => 'products#index'
+  root :to => 'application#home'
 
   # See how all your routes lay out with "rake routes"
 
