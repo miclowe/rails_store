@@ -1,6 +1,6 @@
 RailsStore::Application.routes.draw do
   
-  resources :reviews # Don't need views for the reviews
+  # resources :reviews # Don't need views for the reviews
   # resources :reviews, :only => [:new, :create]
 
   # Member routes add custom action to a specific instance using URL suffix and HTTP method provided
@@ -11,11 +11,11 @@ RailsStore::Application.routes.draw do
     end
   end
 
-  # get '/reviews(.:format)', :controller => 'reviews', :action => 'index', :as => 'reviews'
-  # get '/reviews/new(.:format)', :controller => 'reviews', :action => 'new', :as => 'new_review'
-  # post '/reviews(.:format)', :controller => 'reviews', :action => 'create'
-  # get '/reviews', :to => 'reviews#index', :as => 'reviews'
-  # get '/reviews/:id(.:format)', :controller => 'reviews', :action => 'show', :as => 'review'
+  get '/reviews(.:format)', :controller => 'reviews', :action => 'index', :as => 'reviews'
+  get '/reviews/new(.:format)', :controller => 'reviews', :action => 'new', :as => 'new_review'
+  post '/reviews(.:format)', :controller => 'reviews', :action => 'create'
+  get '/reviews', :to => 'reviews#index', :as => 'reviews'
+  get '/reviews/:id(.:format)', :controller => 'reviews', :action => 'show', :as => 'review'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

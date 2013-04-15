@@ -1,6 +1,7 @@
-<h1>Editing review</h1>
+<h2 class="center bold">Editing review for <%= @product_name %></h2>
+<%#= params.inspect %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @review %> |
-<%= link_to 'Back', reviews_path %>
+<%#= link_to 'Show', @review %> |
+<p><%= link_to 'Back to Products', products_path, :class => "btn btn-small" %></p>

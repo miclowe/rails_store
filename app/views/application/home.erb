@@ -1,19 +1,11 @@
 <% title "Home" %>
-<div class="center hero-unit">
+<div class="center home_container">
   <h3>Welcome to</h3>
   <h1>The Rails Shop</h1>
 
-  <h3>This is the home page for the application.</h3>
+  <h4>Home of curiously random stuff.</h4>
 
-  <%= link_to "Enter Store", '/products', class: "btn btn-large btn-primary" %>
+  <%= link_to "Browse Around", '/products', class: "btn btn-large" %>
 </div>
 
 
-<div class="span12 home">
-  <div class="span6">
-    <%= link_to 'Products', products_path %>
-  </div>
-  <div class="span6">
-    <%= link_to 'Reviews', reviews_path %>
-  </div>
-</div>

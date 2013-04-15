@@ -1,7 +1,7 @@
 <% title "#{@product.name}"%>
-<h1>Editing product</h1>
+<h2 class="center bold">Editing: <%= @product.name %></h2>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<%#= link_to 'Show', @product %>
+<p><%= link_to 'Back to Products', products_path, :class => "btn btn-small" %></p>

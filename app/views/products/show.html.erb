@@ -1,45 +1,52 @@
 <% title "#{@product.name}"%>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Image:</b>
-  <% if @product.image_url.present? %>
-    <%= image_tag("#{@product.image_url}") %>
-  <% else %>
-    No image available
-  <% end %>
-</p>
+<div class="row">
+  <div class="span8">
+    <div class="row">
+      <div class="span5">
+        <div class="show_image">
+          <% if @product.image_url.present? %>
+            <%= image_tag("#{@product.image_url}") %>
+          <% else %>
+            No image available
+          <% end %>
+        </div>
+        <h2><%= @product.name %></h2>
+        <p><%= @product.description %></p>
+        <p><a class="btn btn-small" href="/reviews/new?id=<%= @product.id %>">Add Review</a></p>
+      </div>
+      <div class="span3">
+        <h4><%= number_to_currency(@product.price) %></h4>
+        <p><%= pluralize(@user_reviews.count, "review") %></p>
+        <p><%= link_to 'Add to Cart', add_to_cart_product_path(@product), method: :post, :class => "btn btn-small" %></p>
+        <p><%= link_to 'Edit Product', edit_product_path(@product), :class => "btn btn-small" %></p>
+      </div>
+    </div>
+  </div>
+  <%= render "cart" %>
+</div>
+<div class="row">
+  <div class="span12 reviews">
+    <h2>Reviews</h2>
+    <% @user_reviews.each do |review| %>
+      <div class="reviews_container">
+        <p class="bold">
+          <% if review.rating == 0 %>
+            0 stars
+          <% else %>
+            <%= "*" * review.rating %>
+          <% end %>
+        </p>
+        <p><%= review.body %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @product.name %>
-</p>
+<%# @product.id %>
+<!-- <p><%#= link_to 'Add Review', new_review_path(@product.id), :class => "btn btn-medium" %></p> -->
+<div class="span12 back_btn">
+  <p><%= link_to 'Back to Products', products_path, :class => "btn btn-small" %></p>
+</div>
 
-<p>
-  <b>Description:</b>
-  <%= @product.description %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= number_to_currency(@product.price) %>
-</p>
-
-<p>
-  <b>Product ID:</b>
-  <%= @product.id %>
-</p>
-
-<p><a href="/reviews/new?id=<%= @product.id %>">Create Review</a></p>
-<h2>User Reviews</h2>
-  <% @user_reviews.each do |review| %>
-    Rating: <%= review.rating %><br />
-    Review: <%= review.body %><br />
-    Reviewed on: <%= review.created_at.strftime("%A, %B %e, %Y") %>
-  <% end %>
-<hr />
-<%= link_to 'Add to Cart', add_to_cart_product_path(@product), method: :post %>
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
-
-<%= render "cart"%>

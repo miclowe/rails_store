@@ -1,44 +1,32 @@
 <% title 'Products' %>
 <p id="notice"><%= notice %></p>
 
-<h2><%= yield(:title) %></h2>
+<h1><%= yield(:title) %></h1>
 
-<div class="row">
+<div class="row main">
   <div class="span8">
     <div class="row">
-
       <ul>
-
       <% @products.each do |product| %>
-
         <li class="product_item_container">
-
-        <!-- <div class="span3 products_grid"> -->
           <div class="img_container center">
             <% if product.image_url.present? %>
-              <%= image_tag("#{product.image_url}", :class => "img_small") %>
+              <%= link_to image_tag("#{product.image_url}", :class => "img_small"), product %>
             <% else %>
-              No image available
+              <%= link_to "No image available", product %>
             <% end %>
           </div>
           <div class="product_detail_container">
             <p><%= link_to "#{product.name}", product %></p>
-           <p><%= number_to_currency(product.price) %></p>
-           <p><%= link_to 'Add to Cart', add_to_cart_product_path(product), method: :post %></p>
+           <p class="bold"><%= number_to_currency(product.price) %></p>
+           <p><%= link_to 'Add to Cart', add_to_cart_product_path(product), method: :post, :class => "btn btn-mini" %></p>
            <p><%= link_to 'Edit', edit_product_path(product) %> | <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-        <!-- </div> -->
         </div>
       </li>
-
       <% end %>
-
       </ul>
-
     </div>
-  <br />
-
-  <%= link_to 'New Product', new_product_path %>
-
+  <%#= link_to 'New Product', new_product_path %>
   </div>
-  <%= render "cart"%>
+  <%= render "cart" %>
 </div>

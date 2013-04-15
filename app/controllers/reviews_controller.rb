@@ -46,20 +46,27 @@ class ReviewsController < ApplicationController
   # GET /reviews/1/edit
   def edit
     @review = Review.find(params[:id])
-    # @products = Product.all
+    @product = Product.find{|p| p.id == params[:id].to_i}
+
+    if params[:id].present?
+      @product_name = Product.all.find{|p| p.id == params[:id].to_i}.name
+    else 
+      # @product_name = Product.find{|p| p.id == (@review.product_id).to_i}.name
+      @product_name = Product.all.find{|p| p.id == (@review.product_id).to_i}
+    end
   end
 
   # POST /reviews
   # POST /reviews.json
   def create
     @review = Review.new(params[:review])
+    @product = Product.find{|p| p.id == (@review.product_id).to_i}
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render json: @review, status: :created, location: @review }
+        format.html { redirect_to @product, notice: 'Review was successfully created.' }
+        format.json { render json: @product, status: :created, location: @review }
       else
-        @product = Product.all.find{|p| p.id == (@review.product_id).to_i}
         format.html { render action: "new" }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end

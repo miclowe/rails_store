@@ -1,24 +1,31 @@
 <div class="span4">
-  <div class="well">
-    <h4 class="center">Your Shopping Cart</h4>
-    <table>
-      <tr>
-        <th>Item</th>
-        <th>Price</th>
-        <th></th>
-      </tr>
-      <% @products_in_cart.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= number_to_currency(product.price) %></td>
-        <td><%= link_to 'Remove', remove_from_cart_product_path(product), method: :post %></td>
-      </tr>
-      <% end %>
-      <tr>
-        <td>Total:</td>
-        <td><%= number_to_currency(@cart_total) %></td>
-        <td></td>
-      </tr>
-    </table>
+  <div class="cart_container">
+    <h4>Your Cart</h4>
+    <div class="cart_detail_container">
+      <table>
+        <tr>
+          <th class="col_item">Item</th>
+          <th>Price</th>
+          <th class="col_btn"></th>
+        </tr>
+        <% @products_in_cart.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td class="price_txt right"><%= number_to_currency(product.price) %></td>
+          <td><%= link_to image_tag("delete-icon.png"), remove_from_cart_product_path(product), method: :post, :class => "icon-small" %></td>
+        </tr>
+        <% end %>
+        <tr>
+          <td class="bold">Total:</td>
+          <td class="total_amt right">
+            <% if @cart_total.nil? %>
+              0.00
+            <% else %>
+              <%= number_to_currency(@cart_total) %></td>
+            <% end %>
+          <td></td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
